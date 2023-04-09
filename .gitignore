@@ -1,0 +1,7 @@
+**/target
+**/.DS_Store
+**/.bloop
+**/.bsp
+**/.metals
+**/.vscode
+project/project
