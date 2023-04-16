@@ -3,9 +3,10 @@ package carell
 import munit.CatsEffectSuite
 import cats.Id
 
-class ExecutorTests extends CatsEffectSuite {
+import carell.Executor
+class ServerSideExecutorTests extends CatsEffectSuite {
   // using Id monad as the executor effect type
-  val exec = Executor.instance[Either[Throwable, *]]
+  val exec = ServerSideExecutor.instance[Either[Throwable, *]]
 
   test("Build and Run Empty Image") {
     assertEquals(
