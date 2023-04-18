@@ -9,10 +9,10 @@ class ServerSideExecutorTests extends CatsEffectSuite {
   val exec = ServerSideExecutor.instance[Either[Throwable, *]]
 
   test("Build and Run Empty Image") {
-    assertEquals(
+    assertEquals( 
       exec
-        .build(ServerCommand.Build(carell.Build.empty))
-        .flatMap(h => exec.run(ServerCommand.Run(h)))
+        .build(carell.Build.empty)
+        .flatMap(exec.run)
         .map(_.getAll),
       Right(Map.empty),
     )

@@ -14,20 +14,15 @@ object ServerSideExecutor {
     new Executor[F] {
       private val emptyHash: Hash = Hash(Array())
 
-      override def build(build: ServerCommand.Build): F[Hash] = (build.build == Build.empty)
+      override def build(build: Build): F[Hash] = (build == Build.empty)
         .guard[Option]  // todo <- do not know this API either
         .as(emptyHash)
         .liftTo[F](new Throwable("Unsupported build!"))
 
-      override def run(run: ServerCommand.Run): F[SystemState] = (run == ServerCommand.Run(emptyHash))
+      override def run(run: Hash): F[SystemState] = (run == emptyHash)
         .guard[Option]
-        .as(KVState(Map.empty))
+        .as(SystemState(Map.empty))
         .liftTo[F](new Throwable("Unsupported Hash!"))
-
     }
-
-  // tracking the state of the executing as a transactional map
-  private final case class KVState(getAll: Map[String, String]) extends SystemState
-
 }
 
