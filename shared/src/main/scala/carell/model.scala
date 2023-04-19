@@ -29,7 +29,7 @@ object Build {
 final case class Hash(value: Array[Byte]) derives Codec.AsObject
 
 // tracking the state of the executing as a transactional map
-private final case class SystemState(getAll: Map[String, String]) derives Codec.AsObject
+private final case class SystemState(all: Map[String, String]) derives Codec.AsObject
 
 // all the commands you can send to server from a client
 enum ServerCommand derives Codec.AsObject {

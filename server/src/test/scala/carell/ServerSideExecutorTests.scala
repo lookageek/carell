@@ -13,7 +13,7 @@ class ServerSideExecutorTests extends CatsEffectSuite {
       exec
         .build(carell.Build.empty)
         .flatMap(exec.run)
-        .map(_.getAll),
+        .map(_.all),
       Right(Map.empty),
     )
   }

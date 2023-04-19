@@ -31,6 +31,7 @@ lazy val server = project
         "org.http4s" %% "http4s-ember-server" % "0.23.3",
         "org.slf4j" % "slf4j-api" % "2.0.7",
         "org.typelevel" %% "log4cats-slf4j" % "2.1.1",
+        "ch.qos.logback" % "logback-classic" % "1.3.0"
     ),
   )
   .dependsOn(shared)
